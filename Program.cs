@@ -1,43 +1,42 @@
 ﻿using System;
-using System.Text;
+
 class Program
 {
     static void Main()
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
-        Console.WriteLine("Шифр Цезаря з випадковим ключем");
-        Console.Write("Введіть текст для шифрування: ");
-        string input = Console.ReadLine() ?? "";
 
-        int key = GetRandomKey();
-
-        string encrypted = Encrypt(input, key);
-        Console.WriteLine($"\nКлюч: {key}");
-        Console.WriteLine($"\nЗашифрований текст:\n{encrypted}");
-
-        Console.WriteLine("\nНатисніть Enter для виходу...");
-        Console.ReadLine();
-    }
-    static int GetRandomKey()
-    {
-        var rnd = new Random();
-        return rnd.Next(1, 26);
-    }
-    static string Encrypt(string input, int key)
-    {
-        if (string.IsNullOrEmpty(input)) return string.Empty;
-
-        var sb = new StringBuilder();
-        input = input.ToLowerInvariant();
-        foreach (char ch in input)
+        while (true)
         {
-            if (ch >= 'a' && ch <= 'z')
+            Console.Clear();
+            Console.WriteLine("Виберіть завдання (введіть номер):");
+            Console.WriteLine("1) Завдання 1 — Шифр Цезаря");
+            Console.WriteLine("2) Завдання 2 — Дешифрування");
+            Console.WriteLine("3) Завдання 3 — оптимізація методу перебору");
+            Console.WriteLine("0) Вихід");
+            Console.Write("Ваш вибір: ");
+
+            string? choice = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(choice)) continue;
+
+            switch (choice.Trim())
             {
-                int shifted = ((ch - 'a') + key) % 26;
-                sb.Append((char)('a' + shifted));
+                case "1":
+                    Task1.Run();
+                    break;
+                case "2":
+                    Task2.Run();
+                    break;
+                case "3":
+                    Task3.Run();
+                    break;
+                case "0":
+                    return;
+                default:
+                    Console.WriteLine("Невірний вибір. Натисніть Enter, щоб спробувати ще раз...");
+                    Console.ReadLine();
+                    break;
             }
-        
         }
-        return sb.ToString();
     }
 }

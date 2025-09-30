@@ -12,3 +12,4 @@
 /home/eshkere/Документи/prakt21/obj/Debug/net8.0/prakt21.pdb
 /home/eshkere/Документи/prakt21/obj/Debug/net8.0/prakt21.genruntimeconfig.cache
 /home/eshkere/Документи/prakt21/obj/Debug/net8.0/ref/prakt21.dll
+/home/eshkere/Документи/prakt21/obj/Debug/net8.0/prakt21.sourcelink.json
